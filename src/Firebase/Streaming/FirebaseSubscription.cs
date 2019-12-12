@@ -30,12 +30,7 @@ namespace Firebase.Database.Streaming
 
         static FirebaseSubscription()
         {
-            var handler = new HttpClientHandler
-            {
-                AllowAutoRedirect = true,
-                MaxAutomaticRedirections = 10,
-                CookieContainer = new CookieContainer()
-            };
+            var handler = new HttpClientHandler();
 
             var httpClient = new HttpClient(handler, true);
 
