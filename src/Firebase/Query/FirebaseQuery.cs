@@ -66,7 +66,6 @@ namespace Firebase.Database.Query
                 .ConfigureAwait(false);
         }
 
-
         /// <summary>
         /// Assumes given query is pointing to a single object of type <typeparamref name="T"/> and retrieves it.
         /// </summary>
@@ -98,6 +97,44 @@ namespace Firebase.Database.Query
                 response.Dispose();
 
                 return JsonConvert.DeserializeObject<T>(responseData, Client.Options.JsonSerializerSettings);
+            }
+            catch (Exception ex)
+            {
+                throw new FirebaseException(url, string.Empty, responseData, statusCode, ex);
+            }
+        }
+
+        /// <summary>
+        /// Queries the firebase server once returning array of items.
+        /// </summary>
+        /// <param name="timeout"> Optional timeout value. </param>
+        /// <typeparam name="T"> Type of elements. </typeparam>
+        /// <returns> Array object of type <typeparamref name="T[]"/>. </returns>
+        public async Task<T[]> OnceArrayAsync<T>(TimeSpan? timeout = null)
+        {
+            var responseData = string.Empty;
+            var statusCode = HttpStatusCode.OK;
+            var url = string.Empty;
+
+            try
+            {
+                url = await this.BuildUrlAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                throw new FirebaseException("Couldn't build the url", string.Empty, responseData, statusCode, ex);
+            }
+
+            try
+            {
+                var response = await this.GetClient(timeout).GetAsync(url).ConfigureAwait(false);
+                statusCode = response.StatusCode;
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                response.EnsureSuccessStatusCode();
+                response.Dispose();
+
+                return JsonConvert.DeserializeObject<T[]>(responseData, Client.Options.JsonSerializerSettings);
             }
             catch (Exception ex)
             {

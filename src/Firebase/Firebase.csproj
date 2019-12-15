@@ -2,24 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageId>FirebaseDatabase.net</PackageId>
-    <PackageVersion>4.0.4</PackageVersion>
-    <Authors>Step Up Labs, Inc.</Authors>
-    <Description>Complex C# library for Firebase Realtime Database built on top of Firebase REST API. Among others it supports following:
-
-      * Offline storage
-      * Querying using available filters
-      * Passing in authentication token
-      * Streaming online changes
-      * Directly Posting / Putting / Patching online data
-
-      Streaming changes (both online and offline) are done using Reactive Extensions.
-    </Description>
+    <PackageId>FirebaseDatabase.Net.Standard.2.1</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Tomáš Pelák</Authors>
+    <Description>This is fork of step-up-labs/firebase-database-dotnet with support of Net Standard 2.1</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://github.com/step-up-labs/firebase-database-dotnet/raw/master/art/FirebaseLogo.128x128.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/step-up-labs/firebase-database-dotnet</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/step-up-labs/firebase-database-dotnet/blob/master/LICENSE</PackageLicenseUrl>
-    <Copyright>Step Up Labs, Inc. 2019</Copyright>
+    <PackageIconUrl>https://github.com/s3w3nofficial/firebase-database-dotnet/raw/master/art/FirebaseLogo.128x128.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/s3w3nofficial/firebase-database-dotnet</PackageProjectUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <Copyright>Tomáš Pelák 20219</Copyright>
     <PackageTags>Firebase Database Realtime</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -27,6 +18,9 @@
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\Firebase.xml</DocumentationFile>
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
